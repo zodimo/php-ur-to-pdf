@@ -6,9 +6,10 @@
  * Time: 5:36 PM
  */
 
+namespace Zodimo\PhpUrlToPdf;
+
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\RequestOptions;
 
 class UrlToPdf
 {
@@ -104,7 +105,7 @@ class UrlToPdf
 
         if(!is_null($this->url)){
             $body['url']=$this->url;
-            echo "url" . $this->url."\n";
+            echo "url :" . $this->url."\n";
         }
         if(!is_null($this->html)){
             $body['html']=$this->html;
@@ -139,8 +140,8 @@ class UrlToPdf
 
 
         $response=$this->client->request('POST', self::API_URL, [
-            GuzzleHttp\RequestOptions::HEADERS=>['content-type' => 'application/json'   ],
-            GuzzleHttp\RequestOptions::BODY => json_encode($body,JSON_UNESCAPED_SLASHES)]);
+            RequestOptions::HEADERS=>['content-type' => 'application/json'   ],
+            RequestOptions::BODY => json_encode($body,JSON_UNESCAPED_SLASHES)]);
 
 
         return $response->getBody()->getContents();
