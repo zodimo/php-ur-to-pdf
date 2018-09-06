@@ -105,7 +105,6 @@ class UrlToPdf
 
         if(!is_null($this->url)){
             $body['url']=$this->url;
-            echo "url :" . $this->url."\n";
         }
         if(!is_null($this->html)){
             $body['html']=$this->html;
